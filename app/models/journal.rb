@@ -8,5 +8,13 @@ class Journal < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :user_id }
   validates :entry_count, numericality: { greater_than_or_equal_to: 0}
   validates :description, length: { maximum: 500}
-  
+
+  def increment_entry_count
+    update(entry_count: entry_count + 1)
+  end
+
+  def decrement_entry_count
+    update(entry_count: entry_count - 1)
+  end
+
 end
