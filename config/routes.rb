@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  #user registration and session endpoints
+  post "/api/v1/register", to: "api/v1/users#create"
 end
