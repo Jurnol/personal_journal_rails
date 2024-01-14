@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_14_180646) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_14_214608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "entries", force: :cascade do |t|
+    t.bigint "journal_id", null: false
+    t.string "title"
+    t.text "content"
+    t.date "entry_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["journal_id"], name: "index_entries_on_journal_id"
+  end
+
   create_table "journals", force: :cascade do |t|
     t.string "title"
-    t.string "status"
+    t.integer "status"
     t.integer "entry_count", default: 0
     t.string "image"
     t.bigint "user_id", null: false
@@ -27,12 +37,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_14_180646) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
+  add_foreign_key "entries", "journals"
   add_foreign_key "journals", "users"
 end
