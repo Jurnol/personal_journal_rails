@@ -11,13 +11,13 @@ RSpec.describe "Api::V1::Sessions", type: :request do
       expect(response.status).to be(200)
       
       response_body = JSON.parse(response.body, symbolize_names: true)
-      
+
       expect(response_body).to have_key(:token)
 
       token = response_body[:token]
 
       decoded_token = JWT.decode(token, Rails.application.credentials.jwt_secret_key, true, { algorithm: "HS256" })
-
+      require 'pry';binding.pry
       expect(decoded_token.first["user_id"]).to eq(@user_1.id)
     end
 

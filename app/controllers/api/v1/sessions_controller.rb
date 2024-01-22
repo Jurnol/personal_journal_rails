@@ -15,6 +15,10 @@ class Api::V1::SessionsController < ApplicationController
   private
 
   def encode_token(payload)
+    # might user a tocken expiration here at some point, but not necessary
+    #for the time being
+    # exp = 2.hours.from_now.to_i
+    # payload[:exp] = exp
     JWT.encode(payload, Rails.application.credentials.jwt_secret_key)
   end
 end
