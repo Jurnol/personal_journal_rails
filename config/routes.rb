@@ -3,7 +3,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
+  
   #user registration and session endpoints
-  post "/api/v1/register", to: "api/v1/users#create"
+  # post "/api/v1/register", to: "api/v1/users#create"
+  # post "/api/v1/login", to: "api/v1/sessions#create"
+
+  namespace :api do 
+    namespace :v1 do 
+      post "/register", to: "users#create"
+      post "/login", to: "sessions#create"
+      delete "/logout", to: "sessions#destroy"
+    end
+  end
 end
