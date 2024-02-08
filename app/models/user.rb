@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password_confirmation, presence: true
+  # may mess around with password length and required characters in the future
+  # validates :password, length: {minimum: 6}
 
   has_secure_password
 end
