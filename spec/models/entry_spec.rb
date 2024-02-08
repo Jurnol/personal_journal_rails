@@ -8,4 +8,8 @@ RSpec.describe Entry, type: :model do
     it { should validate_presence_of(:journal_id)}
     it { should validate_presence_of(:entry_date)}
   end
+
+  describe "instance methods" do 
+    
+  end
 end
