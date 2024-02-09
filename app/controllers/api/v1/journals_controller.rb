@@ -4,7 +4,7 @@ class Api::V1::JournalsController < ApplicationController
   def index
     user = @current_user
       if user
-        render json: {user_journals: user.journals}
+        render json: {user_info: user, user_journals: user.journals}
       end
   end
 end
