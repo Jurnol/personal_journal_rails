@@ -32,5 +32,16 @@ RSpec.describe "Dashboard enpoint" do
       expect(response_body[:user_journals]).to be_a(Array)
       # require 'pry';binding.pry
     end
+
+    it "returns an error if the incorrect token or no token is provided" do 
+      get "/api/v1/journals", headers: { Authorization: "Bearer notatoken "}
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(401)
+
+      response_body = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(response_body[:error]).to eq("Unauthorized")
+    end
   end
 end
