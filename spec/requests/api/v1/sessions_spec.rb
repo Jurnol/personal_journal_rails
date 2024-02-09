@@ -4,7 +4,6 @@ RSpec.describe "Api::V1::Sessions", type: :request do
   describe "POST create a session" do
     it "creates a session and return a JWT token for the user session" do 
       @user_1 = User.create!(first_name: "guy", last_name: "fieri", email: "guy@gmail.com", password: "guy", password_confirmation: "guy")
-      # require 'pry';binding.pry
       post "/api/v1/login", params: {userData: {email: "guy@gmail.com", password: "guy"} }
 
       expect(response).to be_successful
