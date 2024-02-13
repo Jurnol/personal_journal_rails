@@ -30,7 +30,6 @@ RSpec.describe "Dashboard enpoint" do
 
       expect(response_body).to have_key(:user_journals)
       expect(response_body[:user_journals]).to be_a(Array)
-      # require 'pry';binding.pry
     end
 
     it "returns an error if the incorrect token or no token is provided" do 
