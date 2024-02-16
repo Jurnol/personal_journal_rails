@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_14_214608) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_08_201704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_14_214608) do
 
   create_table "journals", force: :cascade do |t|
     t.string "title"
-    t.integer "status"
+    t.integer "status", default: 1
     t.integer "entry_count", default: 0
     t.string "image"
     t.bigint "user_id", null: false
